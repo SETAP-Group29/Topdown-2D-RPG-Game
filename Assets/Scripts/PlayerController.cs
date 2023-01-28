@@ -3,32 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
     
-    [SerializeField]
-    private float _speed = 10f;
-    
-    private Sprite _sprite;
+    [SerializeField] private float movementSpd = 2f;
     private Rigidbody2D _rigidbody;
-    private void Awake()
-    {
+    private Vector2 _movement;
 
-        this._sprite = GetComponent<Sprite>();
-        this._rigidbody = GetComponent<Rigidbody2D>();
+    private void Awake() {
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
-
-
-    private void FixedUpdate()
-    {
-        float horizontalVelocity = (Input.GetAxis("Horizontal")) * _speed;
-        float verticalVelocity = (Input.GetAxis("Vertical")) * _speed;
-
-        this._rigidbody.velocity = new Vector2(horizontalVelocity, verticalVelocity);
+    
+    private void Update() {
+        _movement.x = Input.GetAxis("Horizontal");
+        _movement.y = Input.GetAxis("Vertical");
     }
-
-    void Update()
-    {
-        
+    
+    private void FixedUpdate() {
+        _rigidbody.MovePosition(_rigidbody.position + Time.fixedDeltaTime * movementSpd * _movement);
     }
 }
