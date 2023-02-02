@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     
-    [SerializeField] private float movementSpd = 2f;
+    [SerializeField] private float velocity = 1f;
     private Rigidbody2D _rigidbody;
     private Vector2 _movement;
 
@@ -24,20 +24,27 @@ public class PlayerController : MonoBehaviour {
     }
     
     private void FixedUpdate() {
-        if (_rigidbody.Cast(_movement, _contactFilter, _results, movementSpd * Time.fixedDeltaTime + collisionOffset) == 0) {
-            _rigidbody.MovePosition(_rigidbody.position + Time.fixedDeltaTime * movementSpd * _movement);
-        }
+        PlayerMovement(_movement);
+    }
+
+    private void PlayerMovement(Vector2 movement) {
+        Vector2 xy = movement;
+        Vector2 x = new Vector2(movement.x, 0);
+        Vector2 y = new Vector2(0, movement.y);
+        if (FlagCollisionWithPlayer(xy) == 1) PlayerMovePos(xy);
         else {
-            Vector2 tryVertical = new Vector2(0, _movement.y);
-            if (_rigidbody.Cast(tryVertical, _contactFilter, _results, movementSpd * Time.fixedDeltaTime + collisionOffset) == 0) {
-                _rigidbody.MovePosition(_rigidbody.position + Time.fixedDeltaTime * movementSpd * tryVertical);
-            }
+            if (FlagCollisionWithPlayer(x) == 1) PlayerMovePos(x);
             else {
-                Vector2 tryHorizontal = new Vector2(_movement.x, 0);
-                if (_rigidbody.Cast(tryHorizontal, _contactFilter, _results, movementSpd * Time.fixedDeltaTime + collisionOffset) == 0) {
-                    _rigidbody.MovePosition(_rigidbody.position + Time.fixedDeltaTime * movementSpd * tryHorizontal);
-                }
+                if (FlagCollisionWithPlayer(y) == 1) PlayerMovePos(y);
             }
-        };
+        }
+    }
+    
+    private void PlayerMovePos(Vector2 direction) {
+        _rigidbody.MovePosition(_rigidbody.position + Time.fixedDeltaTime * velocity * direction);
+    }
+    
+    private int FlagCollisionWithPlayer(Vector2 movement) {
+        return _rigidbody.Cast(movement, _contactFilter, _results, collisionOffset + Time.fixedDeltaTime * velocity) == 0 ? 1 : 0;
     }
 }
