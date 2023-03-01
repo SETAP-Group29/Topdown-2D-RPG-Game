@@ -8,6 +8,6 @@
 
         public bool ShouldSave(T instance);
 
-        public byte[] Save(T instance);
+        public Buffer Save(T instance);
     }
 }
