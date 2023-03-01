@@ -12,7 +12,11 @@ namespace State
         private int _currentPtr;
         private int _bufferSize;
 
-        public Buffer(int bufferSize)
+
+        
+        public Buffer() : this(1024) {}
+
+        private Buffer(int bufferSize)
         {
             this._buffer = new byte[_bufferSize];
             this._currentPtr = 0;
@@ -21,6 +25,11 @@ namespace State
 
         public void WriteByte(byte value)
         {
+            if (this._currentPtr >= this._bufferSize)
+            {
+                throw new BufferOverFlow($"Attempted to write go over buffer (sz: {_bufferSize})");
+            }
+
             this._buffer[this._currentPtr] = value;
             this._currentPtr++;
         }
@@ -108,6 +117,21 @@ namespace State
             float y = this.ReadFloat();
             return new Vector2(x, y);
         }
-
+        
+        public Vector3 ReadVector3()
+        {
+            float x = this.ReadFloat();
+            float y = this.ReadFloat();
+            float z = this.ReadFloat();
+            return new Vector3(x, y, z);
+        }
+        
+        public static Buffer operator + (Buffer a, Buffer b)
+        {
+            Buffer newBuffSize = new Buffer(a._currentPtr + b._currentPtr);
+            newBuffSize.WriteBytes(a._buffer, a._currentPtr);
+            newBuffSize.WriteBytes(b._buffer, b._currentPtr);
+            return newBuffSize;
+        }
     }
 }
