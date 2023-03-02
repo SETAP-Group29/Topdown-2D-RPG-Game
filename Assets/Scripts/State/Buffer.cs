@@ -16,6 +16,13 @@ namespace State
         
         public Buffer() : this(1024) {}
 
+        public Buffer(byte[] buffer)
+        {
+            _buffer = buffer;
+            _bufferSize = buffer.Length;
+            _currentPtr = 0;
+        }
+
         private Buffer(int bufferSize)
         {
             this._buffer = new byte[_bufferSize];
@@ -41,8 +48,7 @@ namespace State
                 this.WriteByte(value[i]);
             }
         }
-
-
+        
         public void WriteInt(int val) => this.WriteBytes(BitConverter.GetBytes(val), 4);
         
         public void WriteFloat(float val) => this.WriteBytes(BitConverter.GetBytes(val), 4);
@@ -133,5 +139,7 @@ namespace State
             newBuffSize.WriteBytes(b._buffer, b._currentPtr);
             return newBuffSize;
         }
+
+        public byte[] GetBuffer () => _buffer;
     }
 }
