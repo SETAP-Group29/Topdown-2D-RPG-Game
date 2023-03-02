@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour {
 	private Vector2 _movement;
 	private readonly List<RaycastHit2D> _results = new();
 	private Rigidbody2D _rigidbody;
-
+	[SerializeField] private Animator _animator;
+	
 	private void Awake() {
 		_rigidbody = GetComponent<Rigidbody2D>();
 	}
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour {
 	private void Update() {
 		_movement.x = Input.GetAxis("Horizontal");
 		_movement.y = Input.GetAxis("Vertical");
+
+		_animator.SetFloat("Horizontal", _movement.x);
+		_animator.SetFloat("Vertical", _movement.y);
+		_animator.SetFloat("Speed", _movement.sqrMagnitude);
 	}
 
 	private void FixedUpdate() {
