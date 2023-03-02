@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 7
   collisionOffset: 0.05
-  animator: {fileID: 9144382451067783048}
+  _animator: {fileID: 9144382451067783048}
 --- !u!50 &9144382451067783054
 Rigidbody2D:
   serializedVersion: 4
