@@ -6,21 +6,18 @@ using UnityEngine;
 using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour {
-
-
+    
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     private Story _currentStory;
-    public bool DialogueIsPlaying { get; private set; }
-    
+    public bool DialogueIsPlaying { get; private set; } 
     public static DialogueManager Instance { get; private set; }
 
     private void Awake() {
         if (Instance != null) {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
-
         Instance = this;
     }
 

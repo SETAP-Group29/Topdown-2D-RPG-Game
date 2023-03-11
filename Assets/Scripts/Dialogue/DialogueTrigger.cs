@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour {
-
+	
 	[SerializeField] private GameObject visualCue;
 	[SerializeField] private TextAsset inkJSON;
 	private bool _playerInRange;
