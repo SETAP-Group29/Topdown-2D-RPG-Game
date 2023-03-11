@@ -19,13 +19,19 @@ public class PlayerController : MonoBehaviour {
 		_movement.x = Input.GetAxis("Horizontal");
 		_movement.y = Input.GetAxis("Vertical");
 
-		_animator.SetFloat("Horizontal", _movement.x);
-		_animator.SetFloat("Vertical", _movement.y);
-		_animator.SetFloat("Speed", _movement.sqrMagnitude);
+		// _animator.SetFloat("Horizontal", _movement.x);
+		// _animator.SetFloat("Vertical", _movement.y);
+		// _animator.SetFloat("Speed", _movement.sqrMagnitude);
 	}
 
 	private void FixedUpdate() {
+		if (DialogueManager.Instance.DialogueIsPlaying) {
+			return;
+		}
 		PlayerMovement(_movement);
+		_animator.SetFloat("Horizontal", _movement.x);
+		_animator.SetFloat("Vertical", _movement.y);
+		_animator.SetFloat("Speed", _movement.sqrMagnitude);
 	}
 
 	private void PlayerMovement(Vector2 movement) {
