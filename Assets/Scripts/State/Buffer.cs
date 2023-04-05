@@ -11,8 +11,6 @@ namespace State
         private byte[] _buffer;
         private int _currentPtr;
         private int _bufferSize;
-
-
         
         public Buffer() : this(1024) {}
 
@@ -77,6 +75,11 @@ namespace State
             }
         }
 
+        public void WriteBoolean(bool val)
+        {
+            this.WriteInt(val ? 1: 0);
+        }
+
         public byte ReadByte()
         {
             byte val = this._buffer[this._currentPtr];
@@ -103,6 +106,11 @@ namespace State
         public float ReadFloat()
         {
             return BitConverter.ToSingle(this.ReadBytes(4));
+        }
+        
+        public bool ReadBoolean()
+        {
+            return this.ReadInt() == 1;
         }
 
         public string ReadString()
