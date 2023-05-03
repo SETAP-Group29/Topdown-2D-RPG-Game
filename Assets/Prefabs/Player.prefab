@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 9144382451067783054}
   - component: {fileID: 9144382451067783049}
   - component: {fileID: 9144382451067783048}
+  - component: {fileID: -1719326725171071307}
+  - component: {fileID: 8529770514314238967}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -101,8 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 2
-  collisionOffset: 0.05
-  _animator: {fileID: 9144382451067783048}
 --- !u!50 &9144382451067783054
 Rigidbody2D:
   serializedVersion: 4
@@ -170,3 +170,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1719326725171071307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144382451067781238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ec3009c6569e44da5f32dbfae4ffe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+--- !u!114 &8529770514314238967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144382451067781238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd7ec6322a315b4f9ca36c833e97d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backpack:
+    slots: []
+  backSlotCount: 21
+  toolbar:
+    slots: []
+  toolbarSlotCount: 9
