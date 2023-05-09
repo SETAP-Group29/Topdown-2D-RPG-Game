@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - enemy
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 2082199639
+    locked: 0
+  - name: Dec
+    uniqueID: 526886079
+    locked: 0
+  - name: Main Dec See
+    uniqueID: 2265685729
+    locked: 0
+  - name: player
+    uniqueID: 116993183
+    locked: 0
+  - name: Main Dec Hide
+    uniqueID: 1275707329
     locked: 0
