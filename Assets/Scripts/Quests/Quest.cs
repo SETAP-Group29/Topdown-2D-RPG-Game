@@ -45,7 +45,7 @@ namespace Quests
         /// <exception cref="NullReferenceException"> if a step doesn't exist.</exception>
         public void SetQuestStep(String questStep) 
         {
-            if (_questSteps.ContainsKey(questStep))
+            if (!_questSteps.ContainsKey(questStep))
             {
                 throw new NullReferenceException("Quest step not found");
             }
