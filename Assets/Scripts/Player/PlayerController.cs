@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	
 	[SerializeField] private float velocity = 1f;
-	private Rigidbody2D _rigidbody;
-	private Vector2 _movement;
+	public Rigidbody2D _rigidbody;
+	public bool testingDontMove = false;
+	public Vector2 _movement;
 	public Animator animator;
 	public Transform attackPoint;
 	public LayerMask enemyLayers;
@@ -19,7 +20,9 @@ public class PlayerController : MonoBehaviour {
 		_rigidbody = GetComponent<Rigidbody2D>();
 	}
 
-	private void Update() {
+	private void Update()
+	{
+		if (testingDontMove) return;
 		_movement.x = Input.GetAxis("Horizontal");
 		_movement.y = Input.GetAxis("Vertical");
 		
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour {
 		};
 	}
 
-	private void Attack()
+	public void Attack()
 	{
 		bool flipped = _movement.x < 0;
 
