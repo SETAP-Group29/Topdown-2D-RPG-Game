@@ -9,8 +9,11 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private float collisionOffset = 0.05f;
     private ContactFilter2D _contactFilter;
     private readonly List<RaycastHit2D> _results = new();
+    [SerializeField] public GameObject npc;
     
     [SerializeField] private Animator animator;
+
+    public bool isQuestCompleted;
 
     private void Awake() {
         if (Instance != null) {
@@ -52,5 +55,14 @@ public class PlayerManager : MonoBehaviour {
             ? 1
             : 0;
     }
+
+
+    public void QuestCompletion()
+    {
+        npc = GameObject.Find("buddy");
+        Destroy(npc);
+        isQuestCompleted = true;
+    }
+    
     
 }

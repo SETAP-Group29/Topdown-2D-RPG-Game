@@ -1,3 +1,5 @@
-ERRRRRR HELLOOOOO!!!!!
-I AM A NPC :D:D:D:D:D:D:D:D
-OK BYE BYE
+Hello
+
+this is a test
+
+goodbye

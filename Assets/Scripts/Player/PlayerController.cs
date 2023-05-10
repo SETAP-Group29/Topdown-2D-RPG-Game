@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 	public LayerMask enemyLayers;
 	public float attackRange = 0.5f;
 	private bool isFlipped;
-	public int attackDamage = 40;
+	public int attackDamage = 25;
 	
 	
 	private void Awake() {
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void FixedUpdate() {
+	private void FixedUpdate() { 
 		if (DialogueManager.Instance.DialogueIsPlaying)
 		{
 			return;

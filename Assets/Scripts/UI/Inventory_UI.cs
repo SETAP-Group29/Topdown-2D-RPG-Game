@@ -141,5 +141,3 @@ public class Inventory_UI : MonoBehaviour
         }
     }
 }
-
-

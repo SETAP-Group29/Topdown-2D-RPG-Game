@@ -10,8 +10,9 @@ public class enemyController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float maxRange;
     [SerializeField] private float minRange;
-    public int maxHealth = 10000;
+    public int maxHealth = 100;
     int currentHealth;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,17 @@ public class enemyController : MonoBehaviour
 
         enemyAnimation.SetTrigger("hurt");
 
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        
+        
+    }
+    
+    public void Die()
+    { 
+        PlayerManager.Instance.QuestCompletion();
     }
 
 }
